@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgb(77, 132, 195);
+  font-family: 'Press Start 2P', monospace;
+  position: relative;
+}
+
+/* 背景 canvas */
+#bg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* logo 区背景方框 */
+#logo {
+  position: absolute;
+  top: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background-color: white;
+  width: 30vw;    /* ✅ 控制背景方形宽度 */
+  height: 10vw;   /* ✅ 控制背景方形高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+#logo img {
+  width: 80%;
+  height: auto;
+  max-width: 1800px;
+}
+
+/* 启动按钮 */
+#start-btn {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3.2vw;
+  width: 80%;
+  height: auto;
+  max-width: 1800px;         /* ✅ 控制按钮文字区域最大宽度 */
+  text-align: center;
+  word-wrap: break-word;    /* 自动换行 */
+  padding: 10px;
+  z-index: 3;
+  cursor: pointer;
+  display: none;
+  animation: blink 1s step-start infinite;
+}
+
+.arrow {
+  font-size: 3vw;
+  margin-top: 1vh;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+
+
+/* 问题文字框（透明背景，静止淡入淡出） */
+.floating-text {
+  position: absolute;
+  color: rgb(238, 97, 59);
+  font-size: 12px;
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.4;
+  max-width: 240px;
+  padding: 6px 8px;
+  background-color: transparent;
+  border-radius: 4px;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeInOut 5s ease-in-out forwards;
+  pointer-events: none;
+}
+
+/* 2秒淡入 + 2秒停留 + 2秒淡出 */
+@keyframes fadeInOut {
+  0%   { opacity: 0; }
+  33%  { opacity: 1; }
+  66%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
